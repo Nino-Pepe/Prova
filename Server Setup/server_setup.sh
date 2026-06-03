@@ -674,7 +674,17 @@ EOF"
     execute "sysctl -p /etc/sysctl.d/99-network-tune.conf"
 fi
 
-execute ./zshsetup.sh -f ./zsh_plugin_lists/proxmox false
+if [ -x "./zshsetup.sh" ]; then
+    local_plugins_file="./zsh_plugin_lists/proxmox.txt"
+
+    if [ -f "$local_plugins_file" ]; then
+        execute "./zshsetup.sh -f $local_plugins_file false"
+    else
+        log "Skipping local zsh setup: ./zsh_plugin_lists/proxmox.txt is not available in this repository."
+    fi
+else
+    log "Skipping local zsh setup: ./zshsetup.sh is not available in this repository."
+fi
 
 log "Server setup completed successfully!"
 log "Please review the following:"
