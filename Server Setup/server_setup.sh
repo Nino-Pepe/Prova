@@ -281,7 +281,7 @@ if [ "$SKIP_UPGRADES" = false ]; then
         
         log "Opening unattended-upgrades configuration file..."
         log "Recommended changes:"
-        log "1. Uncomment '${distro_id}:${distro_codename}-updates' to enable non-security updates"
+        log "1. Uncomment '\${distro_id}:\${distro_codename}-updates' to enable non-security updates"
         log "2. Set 'Unattended-Upgrade::AutoFixInterruptedDpkg' to 'true' to recover from interrupted updates"
         log "3. Set 'Unattended-Upgrade::MinimalSteps' to 'true' for safer upgrades"
         log "4. Enable automatic cleanup:"
