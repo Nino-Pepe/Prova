@@ -579,9 +579,10 @@ if [ "$SKIP_DOCKER" = false ]; then
     tee /etc/apt/sources.list.d/docker.list > /dev/null
     
     # Update package list and install Docker
-    # Install both the modern plugin and the legacy docker-compose binary for compatibility.
+    # Install the modern Docker CLI plugin only; the legacy docker-compose binary is not needed
+    # because Docker Compose v2 already provides the 'docker compose' command.
     execute "apt update"
-    execute "apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose"
+    execute "apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin"
     
     # Configure system for Docker networking
     log "Configuring system for Docker networking..."
