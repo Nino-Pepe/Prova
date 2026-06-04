@@ -676,15 +676,15 @@ EOF"
 fi
 
 if [ -x "./zshsetup.sh" ]; then
-    local_plugins_file="./zsh_plugin_lists/proxmox.txt"
+    local_plugins_file="./zsh_plugin_lists/proxmox"
 
     if [ -f "$local_plugins_file" ]; then
         execute "./zshsetup.sh -f $local_plugins_file false"
     else
-        log "Skipping local zsh setup: ./zsh_plugin_lists/proxmox.txt is not available in this repository."
+        log "Skipping local zsh setup: ./zsh_plugin_lists/proxmox is not available in this repository."
     fi
 else
-    log "Skipping local zsh setup: ./zshsetup.sh is not available in this repository."
+    log "Skipping local zsh setup: ./zshsetup.sh is not available in this repository or is not executable."
 fi
 
 log "Server setup completed successfully!"
